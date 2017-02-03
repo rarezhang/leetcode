@@ -3,7 +3,7 @@ Given a positive integer, output its complement number. The complement strategy 
 
 Note:
 The given integer is guaranteed to fit within the range of a 32-bit signed integer.
-You could assume no leading zero bit in the integer’s binary representation.
+You could assume no leading zero bit in the integer's binary representation.
 Example 1:
 Input: 5
 Output: 2
@@ -32,9 +32,15 @@ class Solution(object):
         
         
 # top solution 
-class Solution(object):
+class TopSolution(object):
     def findComplement(self, num):
         i = 1
+        # find '111...' with corret bit length
         while i <= num:
             i = i << 1  # <<: Returns x with the bits shifted to the left by y places (and new bits on the right-hand-side are zeros)
         return (i - 1) ^ num  # ^: xor
+
+ts = TopSolution()
+it = 5
+rs = ts.findComplement(it)
+print("input: {0}, output: {1}".format(it, rs))
