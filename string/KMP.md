@@ -32,20 +32,23 @@ value: | 0 | 0 | 1 | 2 | 3 | 4 | 0 | 1 |
 
 ```
 def kmp_table(s):   
+    """
+    O(K): K=length(s) 
+    """
     length = len(s)
     partial_match_table = [0]*length
     s = list(s)
     i,j=0,1
     while i<length and j<length:
-        if s[i]==s[j]:
+        if s[i]==s[j]:  # case 1: the substring continues  
             partial_match_table[j]=i+1
             i+=1
             j+=1
-        else:
+        else:  # case 2: the substring doesn't continues, but can fall back
             if i==0:
                 partial_match_table[j]=0
                 j+=1
-            else:
+            else:  # case 3: run out of candates
                 i = partial_match_table[i-1]
     return partial_match_table
 
@@ -102,4 +105,34 @@ matching the pattern "abababca" against the text "bacbababaabcbab"
 |   |   |   |   |   |   | x | x | l |   |   |   |   |   |   |   |
 |   |   |   |   |   |   |   |   | a | b | a | b | a | b | c | a |
         
-- pattern is longer than the remaining characters in the text, so we know there’s no match.        
+- pattern is longer than the remaining characters in the text, so we know there’s no match.  
+
+```
+def kmp_search(P, S, kmp_table):
+    """
+    O(n)
+    P: the pattern(word) sought
+    S: the text to be searched
+    return: an integer (the zero-based position in S at which P is found)
+
+    """
+    m = 0  # the beginning of the current match in S
+    i = 0  # the position of the current character in P
+    
+    while m + i < len(S):
+        if P[i] == S[m+i]:
+            if i == len(P) - 1:
+                return m
+            i += 1
+        else:
+            if kmp_table[i] > -1:
+                m = m + i - kmp_table[i]
+                i = kmp_table[i]
+            else:
+                m += 1
+                i = 0
+    return None  # have searche all of S unsuccessfully
+    
+s="ababab"
+print(kmp_search('aba', s, kmp_table(s)))
+```      
