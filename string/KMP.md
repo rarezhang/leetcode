@@ -135,4 +135,5 @@ def kmp_search(P, S, kmp_table):
     
 s="ababab"
 print(kmp_search('aba', s, kmp_table(s)))
+# 0 
 ```      
