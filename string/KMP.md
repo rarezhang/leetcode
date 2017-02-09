@@ -5,7 +5,9 @@
 The length of the longest proper prefix in the (sub)pattern that matches a proper suffix in the same (sub)pattern.  
 
 "abababca":
+
 char:  | a | b | a | b | a | b | c | a |
+-------|---|---|---|---|---|---|---|---|
 index: | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 
 value: | 0 | 0 | 1 | 2 | 3 | 4 | 0 | 1 |
 
@@ -35,20 +37,30 @@ If a partial match of length ```partial_match_length``` is found and ```table[pa
 
 example:  
 matching the pattern "abababca" against the text "bacbababaabcbab"  
+
 -------------------------------------------------------------------------------------  
 bacbababaabcbab  
  |  
  abababca  
+ 
+| b | a | c | b | a | b | a | b | a | a | b | c | b | a | b |
+|   | | |   |   |   |   |   |   |   |   |   |   |   |   |   |
+|   | a | b | a | b | a | b | c | a |   |   |   |   |   |   |
+
+
+ 
 - partial_match_length=1   
 - table[partial_match_length - 1]=table[0]=0  
 - don't skip  
+
 -------------------------------------------------------------------------------------  
 bacbababaabcbab
     |||||
     abababca
-- partial_match_length=5
-- table[partial_match_length - 1]=table[4]=3
-- skip=partial_match_length-table[4]=5-3=1
+- partial_match_length=5  
+- table[partial_match_length - 1]=table[4]=3  
+- skip=partial_match_length-table[4]=5-3=1  
+
 -------------------------------------------------------------------------------------
 bacbababaabcbab  
     xx|||  
@@ -56,6 +68,7 @@ bacbababaabcbab
 - partial_match_length=3  
 - table[partial_match_length - 1]=table[2]=1  
 - skip=partial_match_length-table[2]=3-1=2  
+
 -------------------------------------------------------------------------------------  
 bacbababaabcbab  
       xx|  
