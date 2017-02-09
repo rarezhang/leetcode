@@ -72,9 +72,6 @@ matching the pattern "abababca" against the text "bacbababaabcbab"
 - skip=partial_match_length-table[2]=3-1=2  
 
 -------------------------------------------------------------------------------------  
-bacbababaabcbab  
-      xx|  
-        abababca  
         
 | b | a | c | b | a | b | a | b | a | a | b | c | b | a | b |   |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
