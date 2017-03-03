@@ -4,7 +4,7 @@ Determine whether an integer is a palindrome. Do this without extra space.
 palindrome: a word, phrase, or sequence that reads the same backward as forward, e.g., madam or nurses run.
 """
 
-'''
+
 class Solution(object):
     def isPalindrome(self, x):
         """
@@ -32,7 +32,7 @@ class Solution(object):
                 left += 1
                 right -= 1
         return True   
-'''
+
 # top solution 
 class Solution(object):
     def isPalindrome(self, x):
