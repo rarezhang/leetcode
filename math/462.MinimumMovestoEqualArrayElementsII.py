@@ -17,7 +17,7 @@ Only two moves are needed (remember each move increments or decrements one eleme
 [1,2,3]  =>  [2,2,3]  =>  [2,2,2]
 """
 
-'''
+
 # find median point, statistics in python 3.4 
 from statistics import median
 class Solution(object):
@@ -100,7 +100,7 @@ class Solution(object):
         for x in nums:
             result += abs(median-x)
         return result
-'''           
+           
             
 
 # pythonic 
