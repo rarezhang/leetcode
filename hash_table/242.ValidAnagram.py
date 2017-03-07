@@ -30,7 +30,7 @@ class Solution(object):
                 dic[cha] = dic.get(cha) - 1
                 if dic[cha] == 0:
                     del dic[cha]
-        return not bool(dic)  # Empty dictionaries evaluate to False in Python:
+        return not bool(dic)  # Empty dictionaries evaluate to False in Python
             
 sol = Solution()
 s = "rat"
@@ -38,3 +38,49 @@ t = "car"
 
 r = sol.isAnagram(s, t)
 print(r)
+
+# top solution 
+# improvement 
+class Solution(object):
+    def isAnagram(self, s, t):
+        """
+        :type s: str
+        :type t: str
+        :rtype: bool
+        """
+        dic_s, dic_t = {}, {}
+        for cha in s:
+            dic_s[cha] = 1 + dic_s.get(cha, 0)
+        for cha in t:
+            dic_t[cha] = 1 + dic_t.get(cha, 0)
+        return dic_s == dic_t
+
+# top solution 
+
+class Solution(object):
+    def isAnagram(self, s, t):
+        """
+        :type s: str
+        :type t: str
+        :rtype: bool
+        """
+        alphabets = [0 for _ in range(26)]
+        for i in s:
+            alphabets[ord(i)-ord('a')]+=1
+        for i in t:
+            alphabets[ord(i)-ord('a')]-=1
+        for x in alphabets:
+            if x != 0: return False
+        return True
+        
+        
+# pythonic 
+
+class Solution(object):
+    def isAnagram(self, s, t):
+        """
+        :type s: str
+        :type t: str
+        :rtype: bool
+        """
+        return sorted(s) == sorted(t)
