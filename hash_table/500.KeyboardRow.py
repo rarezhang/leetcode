@@ -19,11 +19,41 @@ class Solution(object):
         :rtype: List[str]
         """
         result = []
-        for w in words:
-            if w in row1:
-                result.append('1')
-            elif w in row2: 
-                result.append('2')
-            elif w in row3:
-                result.append('3')
-        return len(set(result)) == 1
+        for word in words:
+            temp = []
+            for w in word:
+                if w in row1:
+                    temp.append('1')
+                elif w in row2: 
+                    temp.append('2')
+                elif w in row3:
+                    temp.append('3')
+            if len(set(temp)) == 1:
+                result.append(word)
+        return result
+
+# top solution 
+class Solution(object):
+    def findWords(self, words):
+        """
+        :type words: List[str]
+        :rtype: List[str]
+        """
+        line1, line2, line3 = set('qwertyuiop'), set('asdfghjkl'), set('zxcvbnm')
+        ret = []
+        for word in words:
+          w = set(word.lower())
+          if w.issubset(line1) or w.issubset(line2) or w.issubset(line3):
+            ret.append(word)
+        return ret
+        
+        
+# pythonic 
+class Solution(object):
+    def findWords(self, words):
+        """
+        :type words: List[str]
+        :rtype: List[str]
+        """
+        return filter(re.compile('(?i)([qwertyuiop]*|[asdfghjkl]*|[zxcvbnm]*)$').match, words)
+        
