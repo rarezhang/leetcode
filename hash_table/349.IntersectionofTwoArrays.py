@@ -43,9 +43,7 @@ class Solution(object):
         nums2.sort()
         result = set()
         i = j = 0
-        while True:
-            if i >= len(nums1) or j >= len(nums2):
-                break 
+        while i < len(nums1) and j < len(nums2):
             if nums1[i] < nums2[j]:
                 i += 1
             elif nums1[i] > nums2[j]:
