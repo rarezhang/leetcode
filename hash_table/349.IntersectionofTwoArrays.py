@@ -30,6 +30,31 @@ class Solution(object):
         nums1, nums2 = set(nums1), set(nums2)
         return [x for x in nums2 if x in nums1]
 
-        
 
+# two pointers        
+class Solution(object):
+    def intersection(self, nums1, nums2):
+        """
+        :type nums1: List[int]
+        :type nums2: List[int]
+        :rtype: List[int]
+        """
+        nums1.sort()  # O(nlogn)
+        nums2.sort()
+        result = set()
+        i = j = 0
+        while True:
+            if i >= len(nums1) or j >= len(nums2):
+                break 
+            if nums1[i] < nums2[j]:
+                i += 1
+            elif nums1[i] > nums2[j]:
+                j += 1
+            else:
+                result.add(nums1[i])
+                i += 1
+                j += 1
+        return list(result)
+                
+                
         
