@@ -53,7 +53,8 @@ class Solution(object):
             return False
 
 
-# top solution: stack             
+# top solution: stack 
+# stack: deep first search             
 class Solution(object):
     def isSameTree(self, p, q):
         """
