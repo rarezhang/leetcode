@@ -50,8 +50,13 @@ class Tree:
         
 
     
-    def print_tree(self):  # todo 
-        self._print_tree(self.root)
+    def __str__(self):  
+        result = ''
+        tree = self.breadth_first()
+        for level in tree:
+            result += str(level) + '\n'
+        return result
+        
         
     def breadth_first(self):
         tree = []
