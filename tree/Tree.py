@@ -22,6 +22,9 @@ class Tree:
         self.root = None
         
     def add(self, val):
+        """
+        balance, ignore value  
+        """
         if self.root is None:
             self.root = TreeNode(val)
         else:
@@ -47,8 +50,28 @@ class Tree:
             else:
                 queue.append(node.right)
 
+    def add_sorted(self, val):
+        """
+        sorted, based on value
+        """
+        if self.root is None:
+            self.root = TreeNode(val)
+        else:
+            self._add_sorted(val, self.root)
+            
+    def _add_sorted(self, val, node):
+        if val < node.val:  # add left 
+            if node.left is not None:
+                self._add_sorted(val, node.left)
+            else:
+                node.left = TreeNode(val)
+        else:  # add right 
+            if node.right is not None:
+                self._add_sorted(val, node.right)
+            else:
+                node.right = TreeNode(val)
+            
         
-
     
     def __str__(self):  
         result = ''
