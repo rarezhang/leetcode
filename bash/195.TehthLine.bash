@@ -23,7 +23,7 @@ Hint:
 """
 
 # solution 1
-head -10 file.txt | tail -1
+head -10 file.txt | tail -1 # wrong answer if there is less than 10 lines
 
 # solution 2
 tail -n+10 file.txt | head -1
